@@ -1,0 +1,36 @@
+---
+title: liferay workspace
+parent: 執行與部署
+---
+
+# 知識: liferay workspace
+
+
+- Portal：將多個獨立的 WEB應用，聚合到一個統一的介面，並提供用戶管理、權限控制、導航等功能。
+
+- Site 站點，包含多個頁面，每個頁面代表一個特定的 WEB 內容視圖。
+    - 頁面：可以包含不同類型的 Portlet，每個 Portlet 實現一個特定的功能，例如展示表單等。
+    - 頁面：表示用戶在 WEB 瀏覽器中可以訪問的頁面，可以包含多種端口和內容。
+- Portlet：作為頁面的一個組件顯示，提供一項特定功能，可以重用和模組化，多個 Portlet 可以組合到一個頁面上。
+- Portlet：標準的 Java EE Web 應用。
+    - 每個 Portlet 在其容器中運行，不會影響其他 Portlet。
+    - 通過 Liferay 管理介面配置 Portlet 的行為。
+    - Portlet 可以以不同的方式進行開發，包括 Java、JSP、Angular JS 等前端技術。
+- Portlet：有三種模式，View、Edit、Help。
+- 模塊 Module：可以是 Portlet，也可以是服務、應用程序等。
+    - Liferay中，每個模塊都是 OSGI 模塊。
+    - 模塊可以獨立部屬、更新、卸載，不會影響系統其他部分。
+- 角色 Role：用戶權限的集合，Liferay 提供多個預設角色，例如管理員、內容編輯者。
+- 權限 Permission：定義了用戶對某個資源(內容、頁面)的操作權限，Liferay 提供細緻力度的權限控制，可以為每個頁面、端口設置不同的權限。
+- 用戶組 User Group：允許將多個用戶組織再一起，批量管理其權限。
+- 組織 Organization：使用者可以屬於組織。
+    - 組織可以分層，例如總辦公室→地區辦公室→附屬辦公室。
+
+
+## Liferay 的三層架構：
+
+    - 表現層 (Presentation Layer)：處理用戶請求和顯示內容，通過端口、頁面進行。
+    - 服務層 (Service Layer)：提供核心功能，例如權限管理、內容管理、用戶管理等。
+    - 數據層 (Persistence Layer)：用於持久化儲存，包括數據庫的訪問和管理。
+
+
