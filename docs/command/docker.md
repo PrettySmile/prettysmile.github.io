@@ -32,6 +32,11 @@ docker save [image]:[tag] > file
 docker save xxx:latest > xxx.tar //會產出 xxx.tar 檔案。
 ```
 
+建置image
+```
+docker build -t [name] .
+```
+
 執行
 ```shell
 docker run
@@ -69,4 +74,13 @@ docker start [Container 名稱]
 docker exec -it [Container 名稱] sh
 ```
 
-
+## 基本的 Dockerfile 內容
+```
+FROM node:lts-alpine3.10
+WORKDIR /app
+ADD . /app
+RUN npm install
+COPY . .
+EXPOSE 3000
+CMD [ "npm", "start" ]
+```
