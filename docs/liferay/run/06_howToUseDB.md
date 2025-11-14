@@ -1,6 +1,7 @@
 ---
 title: 如何使用 DB
 parent: 執行與部署
+nav_order: 6
 ---
 
 # 如何使用 DB

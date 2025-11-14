@@ -1,6 +1,6 @@
 ---
 title: '@Servlet'
-parent: 執行與部署
+parent: 註解
 ---
 
 # @Servlet
