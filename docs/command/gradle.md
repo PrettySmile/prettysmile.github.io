@@ -59,55 +59,42 @@ parent: Command
 
 <br>
 
-幫你整理一下 哪些是 Gradle 原生的，哪些是 Liferay Plugin 加的：
-## ✅ Gradle 原生 / 基本
+## ✅ Gradle 原生指令
 - assemble, build, clean, test, check  
 - javadoc  
 - dependencies, dependencyInsight, projects, properties  
 - wrapper, init  
-- eclipse, idea (IDE 支援)  
-- components, model …（一些通用查詢用的）  
+- eclipse, idea
+- components, model …
 
-## ✅ Liferay Gradle Plugin / Workspace 加的
-這些就是你在輸出裡面看到的「跟 Liferay 生態有關」的 tasks：
+## ✅ 由 Liferay Gradle Plugin / Workspace 提供的 Gradle 指令
+### Module / Plugin 任務相關
+- deploy：打包並丟到 deploy/ 資料夾（熱部署用）。
+- deployFast：直接把資源丟到工作目錄，比較快的熱部署方式。  
+- watch：監控檔案變更，自動 redeploy。  
+- buildLang：跑 Liferay Lang Builder，處理 Language.properties。  
+- buildService：跑 Liferay Service Builder 產生 -api, -service。  
+- buildREST：產生 REST Builder API。  
+- buildUpgradeTable：產生 upgrade SQL。  
+- buildWSDD：產生 SOAP 相關的描述檔。  
+- buildSoy / replaceSoyTranslation / transpileJS / configJSModules：前端資源編譯。  
+- cleanServiceBuilder：清掉 Service Builder 的 table。  
 
-### Module / Plugin 任務
-- **deploy：打包並丟到 deploy/ 資料夾（熱部署用）**
-- deployFast：直接把資源丟到工作目錄，比較快的熱部署方式  
-- watch：監控檔案變更，自動 redeploy  
-- buildLang：跑 Liferay Lang Builder，處理 Language.properties  
-- buildService：跑 Liferay Service Builder 產生 -api, -service  
-- buildREST：產生 REST Builder API  
-- buildUpgradeTable：產生 upgrade SQL  
-- buildWSDD：產生 SOAP 相關的描述檔  
-- buildSoy / replaceSoyTranslation / transpileJS / configJSModules：前端資源編譯  
-- cleanServiceBuilder：清掉 Service Builder 的 table  
+## Bundle / Portal 任務相關
+- initBundle：下載 + 解壓 Liferay bundle。  
+- distBundleZip\*, distBundleTar\*：把 workspace 打包成完整的 Liferay bundle（支援 dev / local / prod / uat profile）。
 
-## Bundle / Portal 任務
-- initBundle：下載 + 解壓 Liferay bundle  
-- **distBundleZip\*, distBundleTar\*：把 workspace 打包成完整的 Liferay bundle（支援 dev/local/prod/uat profile）**
-
-## Docker 任務
+## Docker 任務相關
 - buildDockerImage, pullDockerImage  
 - createDockerfile*, createDockerContainer, dockerDeploy  
 - startDockerContainer, stopDockerContainer, logsDockerContainer, removeDockerContainer  
 
-## 格式化任務
+## 格式化任務相關
 - formatSource：Liferay Source Formatter  
 - checkSourceFormatting  
 - formatJavadoc, formatTLD  
 
-## 驗證 / 測試
-- compileJSP：把 JSP compile 起來檢查錯誤  
-- startTestableTomcat, stopTestableTomcat：本地 bundle 測試用  
-
-<br>
-
----
-
-<br>
-
-所以其實你看到的 buildService, buildLang, deploy, watch, initBundle, dockerDeploy 這些，就是 Liferay Gradle Plugin 提供的，只是它們和原生 Gradle task 一起列出來，沒有額外標記「這是 Liferay 的」。
-
-
+## 驗證 / 測試相關
+- compileJSP：把 JSP compile 起來檢查錯誤。  
+- startTestableTomcat, stopTestableTomcat：本地 bundle 測試用。  
 

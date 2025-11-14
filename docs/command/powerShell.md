@@ -27,7 +27,7 @@ Get-ChildItem -Recurse ".\jar-old" -Include *.class |
 ---
 
 ## jar 指令打包
-(Ailsa：不需要打包，因為包出來的JAR HASH不會一樣，差異在打包的時間記錄)
+(Ailsa：每次打包出來的 JAR，HASH 都會不一樣，因為 JAR 中會記錄打包的時間)
 ```
 jar -cvf xxx.jar -C . .
 ```

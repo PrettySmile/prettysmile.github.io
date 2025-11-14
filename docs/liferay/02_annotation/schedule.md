@@ -1,6 +1,6 @@
 ---
 title: '@Schedule'
-parent: 執行與部署
+parent: 註解
 ---
 
 # @Schedule

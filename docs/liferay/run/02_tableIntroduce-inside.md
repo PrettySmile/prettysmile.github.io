@@ -1,9 +1,10 @@
 ---
-title: 各 Table 介紹 (內建)
+title: 內建 Table
 parent: 執行與部署
+nav_order: 2
 ---
 
-# 各 Table 介紹 (內建)
+# 內建 Table
 
 Organization, Site, User Group，雖然都能「分群使用者」或「控制存取權限」，但用途與層級完全不同。
 
