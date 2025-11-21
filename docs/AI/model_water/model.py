@@ -7,12 +7,12 @@ import torch.optim as optim
 # -----------------------------------------------------------
 # 1. 建立一個 AI 小盒子，此處只有一個線性層。
 # -----------------------------------------------------------
-class WaterModel(nn.Module): # nn.Module 是 PyTorch 裡的「模型基底類別」。
+class TestModel(nn.Module): # nn.Module 是 PyTorch 裡的「模型基底類別」。
     def __init__(self):
         super().__init__()
         self.linear = nn.Linear(1, 1) # Linear(1, 1) 表示：輸入特徵數（氣溫只有一個數字），輸出特徵數（喝水量只有一個數字）。
 
-    def forward(self, x): # 模型「前向傳遞」的規則  #每次我們把資料丟進模型，PyTorch 就會自動呼叫 forward(x)。
+    def forward(self, x): # 每次我們把資料丟進模型，PyTorch 就會自動呼叫 forward(x)。
         return self.linear(x)
 
 
@@ -25,7 +25,7 @@ if __name__ == "__main__":
     y = torch.tensor([[500.0], [700.0], [900.0]]) # 喝水量（output）    # 3 筆資料，每筆資料 1 個特徵。
 
 
-    model = WaterModel() # 初始化模型
+    model = TestModel() # 初始化模型
 
     # -----------------------------------------------------------
     # 3. 設定「AI 怎麼學」：
@@ -46,19 +46,19 @@ if __name__ == "__main__":
     # 4. 開始訓練，設定學習次數
     # -----------------------------------------------------------
     for epoch in range(50001):
-        # 讓模型根據「氣溫x」猜「喝水量y」。
+        # 輸入「氣溫x」，得到 AI 猜測的答案
         pred = model(x)
 
-        # 看看猜得離正確答案，相差多少。
-        loss = criterion(pred, y) # pred = AI 的猜測, y = 喝水量y (真實答案), loss = AI 的猜測距離正確答案的偏差。
+        # 看看 AI 猜測的答案，距離正確答案「喝水量y」，相差多少。
+        loss = criterion(pred, y)
 
         # 清空前一次的梯度，確保每一次修正都是「針對這一次輸入」。
         optimizer.zero_grad()
 
-        # PyTorch 會自動計算每個參數（weight / bias）應該往哪個方向改，以及改多少 → 這就是梯度（gradient）。
+        # PyTorch 會自動計算（weight / bias）應該往哪個方向改，以及改多少 → 這就是梯度（gradient）。
         loss.backward()
 
-        # 更新模型參數，optimizer 會按照梯度 + learning rate → 更新 weight / bias。
+        # 更新模型參數，按照梯度 + 學習率(lr) → 更新 weight / bias。
         optimizer.step()
 
         # 每 N 次印一次，看訓練狀況
@@ -76,6 +76,6 @@ if __name__ == "__main__":
     print(f"模型學到的 weight（斜率）≈ {weight:.2f}")
     print(f"模型學到的 bias（截距）≈ {bias:.2f}")
 
-    torch.save(model.state_dict(), "water_model.pth") # state_dict() → 取得模型所有參數（weight, bias…），並儲存。
+    torch.save(model.state_dict(), "result.pth") # state_dict() → 取得模型所有參數（weight, bias…），並儲存。
 
     print("模型訓練完成並儲存！")

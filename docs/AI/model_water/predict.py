@@ -1,15 +1,13 @@
 # 預測檔
-
-# predict_model.py
 import torch
 import torch.nn as nn
-from water_model import WaterModel  # 只匯入模型類別
+from model import TestModel  # 只匯入模型類別
 
 # 2️⃣ 建立模型
-model = WaterModel()
+model = TestModel()
 
-# 3️⃣ 載入已存好的權重
-model.load_state_dict(torch.load("water_model.pth"))
+# 3️⃣ 載入訓練結果
+model.load_state_dict(torch.load("result.pth"))
 
 # 4️⃣ 切換到評估模式（只做預測，不計算梯度）
 model.eval()
