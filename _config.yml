@@ -1,6 +1,10 @@
 title: 技術部落格
 description: A starter template for a Jeykll site using the Just the Docs theme!
-theme: just-the-docs
+# theme: just-the-docs
+remote_theme: just-the-docs/just-the-docs
+plugins:
+  - jekyll-remote-theme
+  - jekyll-seo-tag
 
 url: https://prettysmile.github.io
 
