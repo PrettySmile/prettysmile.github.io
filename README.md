@@ -172,3 +172,5 @@ The deployment GitHub Actions workflow is heavily based on GitHub's mixed-party 
 [MIT License]: https://en.wikipedia.org/wiki/MIT_License
 [starter workflows]: https://github.com/actions/starter-workflows/blob/main/pages/jekyll.yml
 [actions/starter-workflows]: https://github.com/actions/starter-workflows/blob/main/LICENSE
+
+<!-- 如果 Gemfile 檔案有更改，需要執行  bundle install 指令後，將產生的 Gemfile.lock 檔案上傳git，否則 Actions 會失敗。 -->
